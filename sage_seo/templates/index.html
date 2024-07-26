@@ -1,0 +1,33 @@
+{% load seo %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% for script in scripts_head %}
+            <!-- Third Party: {{ script.name }} -->
+            {{ script.content|safe }}
+        {% endfor %}
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        {% render_meta_tags view_name %}
+
+        {% block render_detail_meta_tags %}
+        {% endblock %}
+    </head>
+    <body>
+        {% for script in scripts_start_body %}
+            <!-- Third Party: {{ script.name }} -->
+            {{ script.content|safe }}
+        {% endfor %}
+
+        <h1>Welcome to SEO</h1>
+        <p>Watch Head Tags</p>
+
+        {% for script in scripts_end_body %}
+            <!-- Third Party: {{ script.name }} -->
+            {{ script.content|safe }}
+        {% endfor %}
+    </body>
+</html>
