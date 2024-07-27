@@ -35,7 +35,4 @@ setup(
     extras_require={
         'json-forms': ['django-json-forms'],
     },
-    extras_require={
-        'json-forms': ['django-json-forms'],
-    },
 )
