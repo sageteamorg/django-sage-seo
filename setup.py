@@ -5,7 +5,7 @@ with open("README.md", encoding="utf-8") as f:
 
 setup(
     name="django_sage_seo",
-    version="0.1.0",
+    version="0.2.0",
     author="Sepehr Akbarzadeh",
     author_email="sepehr@sageteam.org",
     description="SEO tools for Django",
@@ -17,7 +17,7 @@ setup(
         "Source Code": "https://github.com/sageteamorg/django-sage-seo",
         "Issues": "https://github.com/sageteamorg/django-sage-seo/issues",
     },
-    packages=find_packages(),
+    packages=find_packages(include=["sage_seo", "sage_seo.*"]),
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
@@ -25,4 +25,17 @@ setup(
         "Intended Audience :: Developers",
     ],
     python_requires=">=3.11",
+    install_requires=[
+        "django>=5.0.7",
+        "setuptools>=71.1.0",
+        "wheel>=0.43.0",
+        "twine>=5.1.1",
+        "django-sage-tools>=0.1.1",
+    ],
+    extras_require={
+        'json-forms': ['django-json-forms'],
+    },
+    extras_require={
+        'json-forms': ['django-json-forms'],
+    },
 )

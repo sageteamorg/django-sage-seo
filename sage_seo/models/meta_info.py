@@ -1,9 +1,23 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+
+try:
+    from django_jsonform.models.fields import JSONField
+
+    JSON_FORMS_AVAILABLE = True
+except ImportError:
+    JSON_FORMS_AVAILABLE = False
+
 from sage_tools.mixins.models.base import TimeStampMixin
+from sage_seo.schemas import STATIC_SCHEMA
 
 
 class MetaInformation(TimeStampMixin):
+    keywords_schema = {
+        "type": "array",
+        "items": {"type": "string"}
+    }
+
     view_name = models.CharField(
         max_length=255,
         verbose_name=_("View Name"),
@@ -27,14 +41,38 @@ class MetaInformation(TimeStampMixin):
         db_comment="SEO description of the page, used in search engine listings.",
     )
 
-    keywords = models.TextField(
-        default=list,
-        verbose_name=_("SEO Keywords"),
-        help_text=_(
-            "A list of keywords relevant to the page content, used for SEO purposes."
-        ),
-        db_comment="List of SEO keywords associated with the page.",
-    )
+    if JSON_FORMS_AVAILABLE:
+        keywords = JSONField(
+            schema=keywords_schema,
+            verbose_name=_("SEO Keywords"),
+            help_text=_(
+                "A list of keywords relevant to the page content, used for SEO purposes."
+            ),
+            db_comment="List of SEO keywords associated with the page.",
+        )
+
+        json_ld = JSONField(
+            schema=STATIC_SCHEMA,
+            blank=True,
+            null=True,
+            help_text=_("Structured JSON-LD data for rich snippets. Enter valid JSON."),
+            db_comment="JSON-LD structured data for enhancing search engine listings with rich snippets.",
+        )
+    else:
+        keywords = models.TextField(
+            verbose_name=_("SEO Keywords"),
+            help_text=_(
+                "A list of keywords relevant to the page content, used for SEO purposes."
+            ),
+            db_comment="List of SEO keywords associated with the page.",
+        )
+
+        json_ld = models.TextField(
+            blank=True,
+            null=True,
+            help_text=_("Structured JSON-LD data for rich snippets. Enter valid JSON."),
+            db_comment="JSON-LD structured data for enhancing search engine listings with rich snippets.",
+        )
 
     index_page = models.BooleanField(
         default=True,
@@ -48,13 +86,6 @@ class MetaInformation(TimeStampMixin):
             "Determines if search engine crawlers should follow links on this page. 'True' allows following links, enhancing link equity distribution."
         ),
         db_comment="Controls whether search engine crawlers are advised to follow links found on this page.",
-    )
-
-    json_ld = models.JSONField(
-        blank=True,
-        null=True,
-        help_text=_("Structured JSON-LD data for rich snippets. Enter valid JSON."),
-        db_comment="JSON-LD structured data for enhancing search engine listings with rich snippets.",
     )
 
     canonical_url = models.URLField(

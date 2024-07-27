@@ -6,7 +6,11 @@ from django.conf import settings
 from django.utils.html import format_html
 from django.utils.safestring import mark_safe
 
-from sage_seo.funcs import build_json_ld, build_robots_meta, get_meta_info
+from sage_seo.funcs import (
+    build_json_ld,
+    build_robots_meta,
+    get_meta_info
+)
 
 logger = logging.getLogger(__name__)
 register = template.Library()
@@ -24,8 +28,10 @@ def render_meta_tags(view_name):
         return ""
 
     if isinstance(meta_info.keywords, list):
-        meta_keyword_tag = '<meta name="keywords" content="{}">', ",".join(
-            meta_info.keywords
+        meta_keyword_tag = '<meta name="keywords" content="{}">'.format(
+            ",".join(
+                meta_info.keywords
+            )
         )
     elif isinstance(meta_info.keywords, str):
         meta_keyword_tag = f'<meta name="keywords" content="{meta_info.keywords}">'
