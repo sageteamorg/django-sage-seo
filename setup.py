@@ -5,7 +5,7 @@ with open("README.md", encoding="utf-8") as f:
 
 setup(
     name="django_sage_seo",
-    version="0.2.0",
+    version="0.2.1",
     author="Sepehr Akbarzadeh",
     author_email="sepehr@sageteam.org",
     description="SEO tools for Django",
@@ -33,6 +33,6 @@ setup(
         "django-sage-tools>=0.1.1",
     ],
     extras_require={
-        'json-forms': ['django-json-forms'],
+        'json-forms': ['django-jsonforms>=1.0,<2.0'],
     },
 )

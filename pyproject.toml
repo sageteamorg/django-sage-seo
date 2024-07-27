@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "django-sage-seo"
-version = "0.2.0"
+version = "0.2.1"
 description = "SEO tools for Django"
 authors = ["Sepehr Akbarzadeh <sepehr@sageteam.org>"]
 license = "MIT"
@@ -17,6 +17,7 @@ setuptools = "^71.1.0"
 wheel = "^0.43.0"
 twine = "^5.1.1"
 django-sage-tools = "^0.1.1"
+django-jsonforms = ">=1.0,<2.0"
 
 
 [tool.poetry.group.dev.dependencies]
@@ -35,7 +36,7 @@ types-setuptools = "^71.1.0.20240724"
 django-stubs = "^5.0.2"
 
 [tool.poetry.extras]
-json-forms = ["django-jsonform"]
+json_forms = ["django-jsonforms"]
 
 [build-system]
 requires = ["poetry-core"]
