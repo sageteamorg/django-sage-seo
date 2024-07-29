@@ -4,8 +4,8 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 from sage_tools.mixins.models.base import TimeStampMixin
 
-from ..helpers.enums import RedirectType
-from .validators import validate_url_format
+from sage_seo.helpers.enums import RedirectType
+from sage_seo.models.validators import validate_url_format
 
 
 class URLRedirect(TimeStampMixin):

@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from ..models import URLRedirect
+from sage_seo.models import URLRedirect
 
 
 @admin.register(URLRedirect)
