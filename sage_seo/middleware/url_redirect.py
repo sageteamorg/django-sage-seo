@@ -5,8 +5,8 @@ from django.utils.deprecation import MiddlewareMixin
 from django.http import HttpResponsePermanentRedirect, HttpResponseRedirect
 from django.urls import resolve, Resolver404
 
-from ..models import URLRedirect
-from ..helpers.enums import RedirectType
+from sage_seo.models import URLRedirect
+from sage_seo.helpers.enums import RedirectType
 
 logger = logging.getLogger(__name__)
 
