@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "django-sage-seo"
-version = "0.2.3"
+version = "0.2.4"
 description = "SEO tools for Django"
 authors = ["Sepehr Akbarzadeh <sepehr@sageteam.org>"]
 license = "MIT"

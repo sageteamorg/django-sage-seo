@@ -5,7 +5,7 @@ with open("README.md", encoding="utf-8") as f:
 
 setup(
     name="django_sage_seo",
-    version="0.2.3",
+    version="0.2.4",
     author="Sepehr Akbarzadeh",
     author_email="sepehr@sageteam.org",
     description="SEO tools for Django",
