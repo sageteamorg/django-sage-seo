@@ -7,9 +7,9 @@ from sage_seo.models import RobotsTxt
 
 class RobotsTxtView(View):
     def get(self, request, *args, **kwargs):
-        try:
-            obj = RobotsTxt.objects.first()
+        obj = RobotsTxt.objects.first()
+        if obj:
             content = obj.content
-        except RobotsTxt.DoesNotExist:
+        else:
             content = "User-agent: *\nDisallow: /"
         return HttpResponse(content, content_type="text/plain")
