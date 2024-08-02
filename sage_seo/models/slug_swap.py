@@ -18,6 +18,7 @@ class SlugSwap(models.Model):
         to the new slug. This allows for automatic redirection from the old URL to the new URL.
 
     """
+
     old_slug = models.SlugField(
         _("Old Slug"),
         max_length=255,

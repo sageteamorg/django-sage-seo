@@ -1,9 +1,9 @@
 # admin.py
 from django.contrib import admin
-
-from sage_seo.models import RobotsTxt
-from sage_seo.admin.actions import reset_robots_txt
 from sage_tools.mixins.admins import LimitOneInstanceAdminMixin
+
+from sage_seo.admin.actions import reset_robots_txt
+from sage_seo.models import RobotsTxt
 
 
 @admin.register(RobotsTxt)

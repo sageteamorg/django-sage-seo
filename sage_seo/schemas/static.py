@@ -4,7 +4,7 @@ STATIC_SCHEMA = {
         "@context": {
             "type": "string",
             "default": "https://schema.org",
-            "placeholder": "e.g. https://schema.org"
+            "placeholder": "e.g. https://schema.org",
         },
         "@type": {
             "type": "string",
@@ -21,28 +21,25 @@ STATIC_SCHEMA = {
                 "QAPage",
                 "RealEstateListing",
                 "SearchResultsPage",
-                "WebPage"
+                "WebPage",
             ],
             "default": "ContactPage",
-            "placeholder": "e.g. ContactPage"
+            "placeholder": "e.g. ContactPage",
         },
-        "name": {
-            "type": "string",
-            "placeholder": "e.g. My Organization"
-        },
+        "name": {"type": "string", "placeholder": "e.g. My Organization"},
         "url": {
             "type": "string",
             "format": "url",
-            "placeholder": "e.g. https://www.example.com"
+            "placeholder": "e.g. https://www.example.com",
         },
         "description": {
             "type": "string",
-            "placeholder": "e.g. A short description of the page"
+            "placeholder": "e.g. A short description of the page",
         },
         "image": {
             "type": "string",
             "format": "url",
-            "placeholder": "e.g. https://www.example.com/image.jpg"
+            "placeholder": "e.g. https://www.example.com/image.jpg",
         },
         "mainEntity": {
             "type": "object",
@@ -90,32 +87,29 @@ STATIC_SCHEMA = {
                         "Store",
                         "TelevisionStation",
                         "TouristInformationCenter",
-                        "TravelAgency"
+                        "TravelAgency",
                     ],
                     "default": "Organization",
-                    "placeholder": "e.g. Organization"
+                    "placeholder": "e.g. Organization",
                 },
-                "name": {
-                    "type": "string",
-                    "placeholder": "e.g. Example Organization"
-                },
+                "name": {"type": "string", "placeholder": "e.g. Example Organization"},
                 "url": {
                     "type": "string",
                     "format": "url",
-                    "placeholder": "e.g. https://www.organization.com"
+                    "placeholder": "e.g. https://www.organization.com",
                 },
                 "logo": {
                     "type": "string",
                     "format": "url",
-                    "placeholder": "e.g. https://www.organization.com/logo.png"
+                    "placeholder": "e.g. https://www.organization.com/logo.png",
                 },
                 "sameAs": {
                     "type": "array",
                     "items": {
                         "type": "string",
                         "format": "url",
-                        "placeholder": "e.g. https://www.linkedin.com/company/organization"
-                    }
+                        "placeholder": "e.g. https://www.linkedin.com/company/organization",
+                    },
                 },
                 "contactPoint": {
                     "type": "object",
@@ -123,25 +117,22 @@ STATIC_SCHEMA = {
                         "@type": {
                             "type": "string",
                             "default": "ContactPoint",
-                            "placeholder": "e.g. ContactPoint"
+                            "placeholder": "e.g. ContactPoint",
                         },
                         "telephone": {
                             "type": "string",
-                            "placeholder": "e.g. +1-800-555-5555"
+                            "placeholder": "e.g. +1-800-555-5555",
                         },
                         "contactType": {
                             "type": "string",
-                            "placeholder": "e.g. Customer Support"
+                            "placeholder": "e.g. Customer Support",
                         },
-                        "areaServed": {
-                            "type": "string",
-                            "placeholder": "e.g. Global"
-                        },
+                        "areaServed": {"type": "string", "placeholder": "e.g. Global"},
                         "availableLanguage": {
                             "type": "string",
-                            "placeholder": "e.g. English"
-                        }
-                    }
+                            "placeholder": "e.g. English",
+                        },
+                    },
                 },
                 "address": {
                     "type": "object",
@@ -149,29 +140,20 @@ STATIC_SCHEMA = {
                         "@type": {
                             "type": "string",
                             "default": "PostalAddress",
-                            "placeholder": "e.g. PostalAddress"
+                            "placeholder": "e.g. PostalAddress",
                         },
                         "streetAddress": {
                             "type": "string",
-                            "placeholder": "e.g. 1234 Main St"
+                            "placeholder": "e.g. 1234 Main St",
                         },
                         "addressLocality": {
                             "type": "string",
-                            "placeholder": "e.g. Anytown"
+                            "placeholder": "e.g. Anytown",
                         },
-                        "addressRegion": {
-                            "type": "string",
-                            "placeholder": "e.g. CA"
-                        },
-                        "postalCode": {
-                            "type": "string",
-                            "placeholder": "e.g. 12345"
-                        },
-                        "addressCountry": {
-                            "type": "string",
-                            "placeholder": "e.g. USA"
-                        }
-                    }
+                        "addressRegion": {"type": "string", "placeholder": "e.g. CA"},
+                        "postalCode": {"type": "string", "placeholder": "e.g. 12345"},
+                        "addressCountry": {"type": "string", "placeholder": "e.g. USA"},
+                    },
                 },
                 "geo": {
                     "type": "object",
@@ -179,20 +161,20 @@ STATIC_SCHEMA = {
                         "@type": {
                             "type": "string",
                             "default": "GeoCoordinates",
-                            "placeholder": "e.g. GeoCoordinates"
+                            "placeholder": "e.g. GeoCoordinates",
                         },
                         "latitude": {
                             "type": "number",
-                            "placeholder": "e.g. 37.4224764"
+                            "placeholder": "e.g. 37.4224764",
                         },
                         "longitude": {
                             "type": "number",
-                            "placeholder": "e.g. -122.0842499"
-                        }
-                    }
-                }
-            }
-        }
+                            "placeholder": "e.g. -122.0842499",
+                        },
+                    },
+                },
+            },
+        },
     },
-    "required": ["name", "url"]
+    "required": ["name", "url"],
 }

@@ -1,14 +1,14 @@
 import logging
-from django.urls import reverse, NoReverseMatch
-from django.utils.deprecation import MiddlewareMixin
-from django.http import (
-    Http404,
-    HttpResponseRedirect as TemporaryRedirect,
-    HttpResponsePermanentRedirect as PermanentRedirect
-)
+
 from django.conf import settings
-from sage_seo.models import SlugSwap
+from django.http import Http404
+from django.http import HttpResponsePermanentRedirect as PermanentRedirect
+from django.http import HttpResponseRedirect as TemporaryRedirect
+from django.urls import NoReverseMatch, reverse
+from django.utils.deprecation import MiddlewareMixin
+
 from sage_seo.helpers.enums import RedirectType
+from sage_seo.models import SlugSwap
 
 logger = logging.getLogger(__name__)
 
@@ -43,6 +43,7 @@ class OldSlugRedirectMiddleware(MiddlewareMixin):
     This helps maintain SEO and user experience by ensuring that outdated links
     continue to direct users to the correct content.
     """
+
     def __init__(self, get_response):
         self.get_response = get_response
         super().__init__(get_response)
@@ -66,20 +67,26 @@ class OldSlugRedirectMiddleware(MiddlewareMixin):
                 for slug_name, slug_type in settings.SLUG_TYPE_MAPPING.items():
                     old_slug = request.resolver_match.kwargs.get(slug_name)
                     if old_slug:
-                        updated_kwargs[slug_name] = self._get_new_slug(old_slug, slug_type)
+                        updated_kwargs[slug_name] = self._get_new_slug(
+                            old_slug, slug_type
+                        )
 
                 if updated_kwargs:
                     try:
-                        new_url = reverse(request.resolver_match.view_name, kwargs=updated_kwargs)
+                        new_url = reverse(
+                            request.resolver_match.view_name, kwargs=updated_kwargs
+                        )
                         return self._redirect(new_url, updated_kwargs)
                     except NoReverseMatch as e:
-                        logger.error(f'NoReverseMatch: {e} for view {request.resolver_match.view_name} with kwargs {updated_kwargs}')
-                        raise Http404('Page not found.')
+                        logger.error(
+                            f"NoReverseMatch: {e} for view {request.resolver_match.view_name} with kwargs {updated_kwargs}"
+                        )
+                        raise Http404("Page not found.")
 
             except AttributeError as e:
-                logger.warning(f'AttributeError: {e} in OldSlugRedirectMiddleware')
+                logger.warning(f"AttributeError: {e} in OldSlugRedirectMiddleware")
             except Exception as e:
-                logger.error(f'Unexpected error: {e} in OldSlugRedirectMiddleware')
+                logger.error(f"Unexpected error: {e} in OldSlugRedirectMiddleware")
 
         return response
 
@@ -92,14 +99,18 @@ class OldSlugRedirectMiddleware(MiddlewareMixin):
         slug is returned.
         """
         try:
-            slug_swap = SlugSwap.objects.filter(old_slug=old_slug, content_type__model=slug_type).first()
+            slug_swap = SlugSwap.objects.filter(
+                old_slug=old_slug, content_type__model=slug_type
+            ).first()
             if slug_swap:
                 return slug_swap.new_slug
             return old_slug
         except SlugSwap.DoesNotExist:
             return old_slug
         except Exception as e:
-            logger.error(f'Error retrieving new slug for {old_slug} of type {slug_type}: {e}')
+            logger.error(
+                f"Error retrieving new slug for {old_slug} of type {slug_type}: {e}"
+            )
             return old_slug
 
     def _redirect(self, url, updated_kwargs):
@@ -113,10 +124,10 @@ class OldSlugRedirectMiddleware(MiddlewareMixin):
         """
         try:
             slug_swap = SlugSwap.objects.filter(
-                old_slug=updated_kwargs.get('product_slug') or
-                updated_kwargs.get('post_slug') or
-                updated_kwargs.get('category_slug') or
-                updated_kwargs.get('slug')
+                old_slug=updated_kwargs.get("product_slug")
+                or updated_kwargs.get("post_slug")
+                or updated_kwargs.get("category_slug")
+                or updated_kwargs.get("slug")
             ).first()
             if slug_swap:
                 if slug_swap.redirect_type == RedirectType.Primary:
@@ -125,5 +136,7 @@ class OldSlugRedirectMiddleware(MiddlewareMixin):
                     return TemporaryRedirect(url)
             return TemporaryRedirect(url)
         except Exception as e:
-            logger.error(f'Error during redirect to {url} with kwargs {updated_kwargs}: {e}')
+            logger.error(
+                f"Error during redirect to {url} with kwargs {updated_kwargs}: {e}"
+            )
             return TemporaryRedirect(url)

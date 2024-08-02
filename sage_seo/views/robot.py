@@ -1,6 +1,6 @@
 # views.py
-from django.views.generic.base import View
 from django.http import HttpResponse
+from django.views.generic.base import View
 
 from sage_seo.models import RobotsTxt
 

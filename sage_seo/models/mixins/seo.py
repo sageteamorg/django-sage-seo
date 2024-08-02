@@ -1,13 +1,9 @@
+from django.core.validators import RegexValidator, URLValidator
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-from django.core.validators import URLValidator, RegexValidator
 
-from sage_seo.schemas import (
-    PRODUCT_LIST_SCHEMA,
-    PRODUCT_DETAIL_SCHEMA,
-    BLOG_LIST_SCHEMA,
-    BLOG_DETAIL_SCHEMA
-)
+from sage_seo.schemas import (BLOG_DETAIL_SCHEMA, BLOG_LIST_SCHEMA,
+                              PRODUCT_DETAIL_SCHEMA, PRODUCT_LIST_SCHEMA)
 
 try:
     from django_jsonform.models.fields import JSONField
@@ -18,10 +14,7 @@ except ImportError:
 
 
 class MetaKeyMixin(models.Model):
-    keywords_schema = {
-        "type": "array",
-        "items": {"type": "string"}
-    }
+    keywords_schema = {"type": "array", "items": {"type": "string"}}
 
     keywords = JSONField(
         schema=keywords_schema,
@@ -40,10 +33,10 @@ class MetaKeyMixin(models.Model):
 class OGMixin(models.Model):
     """
     OGMixin is a model mixin that provides Open Graph (OG) metadata fields for a Django model.
-    
-    Open Graph protocol enables any web page to become a rich object in a social graph. 
-    This is used by social media platforms such as Facebook, LinkedIn, and Twitter to display 
-    rich media snippets when links are shared. By including these fields in your models, you 
+
+    Open Graph protocol enables any web page to become a rich object in a social graph.
+    This is used by social media platforms such as Facebook, LinkedIn, and Twitter to display
+    rich media snippets when links are shared. By including these fields in your models, you
     can control how your pages are presented when shared on these platforms.
     """
 
@@ -52,8 +45,10 @@ class OGMixin(models.Model):
         null=True,
         blank=True,
         verbose_name=_("OG Title"),
-        help_text=_("The title of the webpage. Example: 'The Amazing Spider-Man - Movie Review'"),
-        db_comment="The title of the webpage for Open Graph protocol."
+        help_text=_(
+            "The title of the webpage. Example: 'The Amazing Spider-Man - Movie Review'"
+        ),
+        db_comment="The title of the webpage for Open Graph protocol.",
     )
 
     og_type = models.CharField(
@@ -61,34 +56,42 @@ class OGMixin(models.Model):
         null=True,
         blank=True,
         verbose_name=_("OG Type"),
-        help_text=_("The type of the content. Common values: 'website', 'article', 'video', etc. Example: 'article'"),
-        db_comment="The type of the content for Open Graph protocol. Common values include 'website', 'article', 'video', etc."
+        help_text=_(
+            "The type of the content. Common values: 'website', 'article', 'video', etc. Example: 'article'"
+        ),
+        db_comment="The type of the content for Open Graph protocol. Common values include 'website', 'article', 'video', etc.",
     )
 
     og_image = models.URLField(
         null=True,
         blank=True,
         verbose_name=_("OG Image"),
-        help_text=_("The URL of the image that represents the webpage. Example: 'https://www.example.com/image.jpg'"),
+        help_text=_(
+            "The URL of the image that represents the webpage. Example: 'https://www.example.com/image.jpg'"
+        ),
         validators=[URLValidator()],
-        db_comment="The URL of the image that represents the webpage for Open Graph protocol."
+        db_comment="The URL of the image that represents the webpage for Open Graph protocol.",
     )
 
     og_description = models.TextField(
         null=True,
         blank=True,
         verbose_name=_("OG Description"),
-        help_text=_("A description of the webpage content. Example: 'A comprehensive review of the latest Spider-Man movie, including storyline, character development, and special effects.'"),
-        db_comment="A description of the webpage content for Open Graph protocol."
+        help_text=_(
+            "A description of the webpage content. Example: 'A comprehensive review of the latest Spider-Man movie, including storyline, character development, and special effects.'"
+        ),
+        db_comment="A description of the webpage content for Open Graph protocol.",
     )
 
     og_url = models.URLField(
         null=True,
         blank=True,
         verbose_name=_("OG URL"),
-        help_text=_("The URL of the webpage. Example: 'https://www.example.com/page.html'"),
+        help_text=_(
+            "The URL of the webpage. Example: 'https://www.example.com/page.html'"
+        ),
         validators=[URLValidator()],
-        db_comment="The URL of the webpage for Open Graph protocol."
+        db_comment="The URL of the webpage for Open Graph protocol.",
     )
 
     og_site_name = models.CharField(
@@ -97,7 +100,7 @@ class OGMixin(models.Model):
         blank=True,
         verbose_name=_("OG Site Name"),
         help_text=_("The name of the website. Example: 'Example Website'"),
-        db_comment="The name of the website for Open Graph protocol."
+        db_comment="The name of the website for Open Graph protocol.",
     )
 
     og_locale = models.CharField(
@@ -105,9 +108,16 @@ class OGMixin(models.Model):
         null=True,
         blank=True,
         verbose_name=_("OG Locale"),
-        help_text=_("The locale of the content. Common values: 'en_US', 'fr_FR', etc. Example: 'en_US'"),
-        validators=[RegexValidator(regex=r'^[a-z]{2}_[A-Z]{2}$', message=_('Enter a valid locale identifier like en_US'))],
-        db_comment="The locale of the content for Open Graph protocol. Example: 'en_US'."
+        help_text=_(
+            "The locale of the content. Common values: 'en_US', 'fr_FR', etc. Example: 'en_US'"
+        ),
+        validators=[
+            RegexValidator(
+                regex=r"^[a-z]{2}_[A-Z]{2}$",
+                message=_("Enter a valid locale identifier like en_US"),
+            )
+        ],
+        db_comment="The locale of the content for Open Graph protocol. Example: 'en_US'.",
     )
 
     article_author = models.CharField(
@@ -116,7 +126,7 @@ class OGMixin(models.Model):
         blank=True,
         verbose_name=_("Article Author"),
         help_text=_("The name of the author of the article. Example: 'John Doe'"),
-        db_comment="The name of the author of the article for Open Graph protocol."
+        db_comment="The name of the author of the article for Open Graph protocol.",
     )
 
     class Meta:
@@ -132,12 +142,12 @@ class BasicJsonLdMixin(models.Model):
 
 class ProductListJsonLdMixin(BasicJsonLdMixin):
     json_ld = JSONField(
-            schema=PRODUCT_LIST_SCHEMA,
-            blank=True,
-            null=True,
-            help_text=_("Structured JSON-LD data for rich snippets. Enter valid JSON."),
-            db_comment="JSON-LD structured data for enhancing search engine listings with rich snippets.",
-        )
+        schema=PRODUCT_LIST_SCHEMA,
+        blank=True,
+        null=True,
+        help_text=_("Structured JSON-LD data for rich snippets. Enter valid JSON."),
+        db_comment="JSON-LD structured data for enhancing search engine listings with rich snippets.",
+    )
 
     class Meta:
         abstract = True
@@ -145,12 +155,12 @@ class ProductListJsonLdMixin(BasicJsonLdMixin):
 
 class ProductDetailJsonLdMixin(BasicJsonLdMixin):
     json_ld = JSONField(
-            schema=PRODUCT_DETAIL_SCHEMA,
-            blank=True,
-            null=True,
-            help_text=_("Structured JSON-LD data for rich snippets. Enter valid JSON."),
-            db_comment="JSON-LD structured data for enhancing search engine listings with rich snippets.",
-        )
+        schema=PRODUCT_DETAIL_SCHEMA,
+        blank=True,
+        null=True,
+        help_text=_("Structured JSON-LD data for rich snippets. Enter valid JSON."),
+        db_comment="JSON-LD structured data for enhancing search engine listings with rich snippets.",
+    )
 
     class Meta:
         abstract = True
@@ -158,12 +168,12 @@ class ProductDetailJsonLdMixin(BasicJsonLdMixin):
 
 class BlogListJsonLdMixin(BasicJsonLdMixin):
     json_ld = JSONField(
-            schema=BLOG_LIST_SCHEMA,
-            blank=True,
-            null=True,
-            help_text=_("Structured JSON-LD data for rich snippets. Enter valid JSON."),
-            db_comment="JSON-LD structured data for enhancing search engine listings with rich snippets.",
-        )
+        schema=BLOG_LIST_SCHEMA,
+        blank=True,
+        null=True,
+        help_text=_("Structured JSON-LD data for rich snippets. Enter valid JSON."),
+        db_comment="JSON-LD structured data for enhancing search engine listings with rich snippets.",
+    )
 
     class Meta:
         abstract = True
@@ -171,12 +181,12 @@ class BlogListJsonLdMixin(BasicJsonLdMixin):
 
 class BlogDetailJsonLdMixin(BasicJsonLdMixin):
     json_ld = JSONField(
-            schema=BLOG_DETAIL_SCHEMA,
-            blank=True,
-            null=True,
-            help_text=_("Structured JSON-LD data for rich snippets. Enter valid JSON."),
-            db_comment="JSON-LD structured data for enhancing search engine listings with rich snippets.",
-        )
+        schema=BLOG_DETAIL_SCHEMA,
+        blank=True,
+        null=True,
+        help_text=_("Structured JSON-LD data for rich snippets. Enter valid JSON."),
+        db_comment="JSON-LD structured data for enhancing search engine listings with rich snippets.",
+    )
 
     class Meta:
         abstract = True
