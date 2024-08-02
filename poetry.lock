@@ -584,20 +584,17 @@ jsonschema = "*"
 
 [[package]]
 name = "django-sage-tools"
-version = "0.1.2"
+version = "0.1.5"
 description = "Reusable, generic mixins for Django"
 optional = false
 python-versions = "<4.0,>=3.12"
 files = [
-    {file = "django_sage_tools-0.1.2-py3-none-any.whl", hash = "sha256:521410c13c36d6ed80cc66872a86633c3076e224d902a87010d0385fc48e63c7"},
-    {file = "django_sage_tools-0.1.2.tar.gz", hash = "sha256:0f37f7233ae1a2c5f3be3e4f44ac1ac06399ee729478a95e0dd9db21276858fa"},
+    {file = "django_sage_tools-0.1.5-py3-none-any.whl", hash = "sha256:310b7afeb5cc87bd54e5d9fe373d37e7ab1d51181616193be2baf6275e5962bf"},
+    {file = "django_sage_tools-0.1.5.tar.gz", hash = "sha256:84e7c3daa279f9d8b85eafb219df279208687a15e5b1106b0d3b5d218dc70c29"},
 ]
 
 [package.dependencies]
 django = ">=5.0.7,<6.0.0"
-setuptools = ">=72.0.0,<73.0.0"
-twine = ">=5.1.1,<6.0.0"
-wheel = ">=0.43.0,<0.44.0"
 
 [[package]]
 name = "django-stubs"
