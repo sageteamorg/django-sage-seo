@@ -1,12 +1,13 @@
 import logging
 import re
-from django.shortcuts import redirect
-from django.utils.deprecation import MiddlewareMixin
-from django.http import HttpResponsePermanentRedirect, HttpResponseRedirect
-from django.urls import resolve, Resolver404
 
-from sage_seo.models import URLRedirect
+from django.http import HttpResponsePermanentRedirect, HttpResponseRedirect
+from django.shortcuts import redirect
+from django.urls import Resolver404, resolve
+from django.utils.deprecation import MiddlewareMixin
+
 from sage_seo.helpers.enums import RedirectType
+from sage_seo.models import URLRedirect
 
 logger = logging.getLogger(__name__)
 

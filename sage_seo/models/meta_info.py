@@ -9,14 +9,12 @@ except ImportError:
     JSON_FORMS_AVAILABLE = False
 
 from sage_tools.mixins.models.base import TimeStampMixin
+
 from sage_seo.schemas import STATIC_SCHEMA
 
 
 class MetaInformation(TimeStampMixin):
-    keywords_schema = {
-        "type": "array",
-        "items": {"type": "string"}
-    }
+    keywords_schema = {"type": "array", "items": {"type": "string"}}
 
     view_name = models.CharField(
         max_length=255,
