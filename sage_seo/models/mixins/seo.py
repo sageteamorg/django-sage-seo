@@ -29,6 +29,9 @@ class MetaKeyMixin(models.Model):
         verbose_name=_("SEO Description"), null=True, blank=True
     )
 
+    class Meta:
+        abstract = True
+
 
 class OGMixin(models.Model):
     """
