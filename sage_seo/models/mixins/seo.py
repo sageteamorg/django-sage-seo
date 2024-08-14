@@ -19,6 +19,8 @@ class MetaKeyMixin(models.Model):
     keywords = JSONField(
         schema=keywords_schema,
         verbose_name=_("SEO Keywords"),
+        blank=True,
+        null=True,
         help_text=_(
             "A list of keywords relevant to the page content, used for SEO purposes."
         ),
