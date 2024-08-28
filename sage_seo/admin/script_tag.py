@@ -4,7 +4,6 @@ from sage_seo.models import ScriptTag
 
 
 class ScriptTagAdmin(admin.ModelAdmin):
-
     # Fields to display in the admin change list
     list_display = ("name", "placement", "is_active", "created_at", "modified_at")
 

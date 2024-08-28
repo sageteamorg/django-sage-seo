@@ -2,8 +2,12 @@ from django.core.validators import RegexValidator, URLValidator
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-from sage_seo.schemas import (BLOG_DETAIL_SCHEMA, BLOG_LIST_SCHEMA,
-                              PRODUCT_DETAIL_SCHEMA, PRODUCT_LIST_SCHEMA)
+from sage_seo.schemas import (
+    BLOG_DETAIL_SCHEMA,
+    BLOG_LIST_SCHEMA,
+    PRODUCT_DETAIL_SCHEMA,
+    PRODUCT_LIST_SCHEMA,
+)
 
 try:
     from django_jsonform.models.fields import JSONField
@@ -198,6 +202,5 @@ class BlogDetailJsonLdMixin(BasicJsonLdMixin):
 
 
 class SEOMixin(MetaKeyMixin, OGMixin):
-
     class Meta:
         abstract = True

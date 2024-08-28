@@ -1,9 +1,9 @@
+import html
 import json
-import random
+import secrets
 import string
 
 from django.urls import URLPattern, URLResolver
-from django.utils.safestring import mark_safe
 from django.views.generic import DetailView
 
 from sage_seo.helpers.enums import SearchEngineRules
@@ -52,14 +52,18 @@ def build_json_ld(json_ld):
     """Return a script tag with JSON-LD data if present."""
     if json_ld:
         json_ld_data = json.dumps(json_ld)
-        return mark_safe(f'<script type="application/ld+json">{json_ld_data}</script>')
+        # Escape the JSON data before inserting it into the script tag
+        escaped_json_ld_data = html.escape(json_ld_data)
+        return f'<script type="application/ld+json">{escaped_json_ld_data}</script>'
     return ""
 
 
 def generate_short_code():
     length = 6  # Length of the short code
-    # Generate a random string of the specified length
-    return "".join(random.choices(string.ascii_letters + string.digits, k=length))
+    # Generate a cryptographically secure random string of the specified length
+    return "".join(
+        secrets.choice(string.ascii_letters + string.digits) for _ in range(length)
+    )
 
 
 def collect_view_names(patterns, app_names):
