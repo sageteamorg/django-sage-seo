@@ -10,11 +10,37 @@ packages = [
     { include = "sage_seo" }
 ]
 
+classifiers = [
+    "Environment :: Web Environment",
+    "Framework :: Django",
+    "Framework :: Django :: 4.2",
+    "Framework :: Django :: 5.0",
+    "Framework :: Django :: 5.1",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[tool.poetry.urls]
+"Source Code" = "https://github.com/sageteamorg/django-sage-seo"
+"Issues" = "https://github.com/sageteamorg/django-sage-seo/issues"
+"Documentation" = "https://django-sage-seo.readthedocs.io"
+
 [tool.poetry.dependencies]
-python = "^3.12"
-django = "^5.0.7"
-django-jsonforms = ">=1.0,<2.0"
-django-sage-tools = "^0.2.0"
+python = ">=3.8,<4.0"
+django = [
+    { version = ">=4.2,<5.0", python = ">=3.8,<3.10"}, 
+    { version = ">=4.2,<5.3", python = ">=3.10" }  # Django 4.2 and 5.x for Python 3.10+
+]
+django-jsonforms = ">=1.0,<3.0"
+django-sage-tools = "^0.2.2"
 
 
 [tool.poetry.group.dev.dependencies]
@@ -22,8 +48,8 @@ black = "^24.4.2"
 isort = "^5.13.2"
 tox = "^4.16.0"
 coverage = "^7.6.0"
-pre-commit = "^3.7.1"
-sphinx = "^7.4.7"
+pre-commit = "^3.5.0"
+sphinx = "^6.2.1"
 pylint = "^3.2.6"
 sphinx-rtd-theme = "^2.0.0"
 commitizen = "^3.28.0"
@@ -38,7 +64,7 @@ ruff = "^0.5.7"
 json_forms = ["django-jsonform"]
 
 [tool.pytest.ini_options]
-addopts = "--cov=. --cov-report=term-missing --cov-report=html"
+addopts = "--cov --cov-report=term-missing --cov-report=html --cov-fail-under=90"
 DJANGO_SETTINGS_MODULE = "kernel.settings"
 python_files = ["tests.py", "test_*.py"]
 testpaths = ["tests"]
@@ -54,6 +80,26 @@ norecursedirs = [
     "build",
     "kernel"
 ]
+
+[tool.bandit]
+targets = ["./sage_seo"]
+exclude_dirs = [
+    "tests",
+    "migrations",
+]
+
+severity = "medium"
+confidence = "medium"
+max_lines = 500
+progress = true
+reports = true
+output_format = "screen"
+output_file = "bandit_report.txt"
+include = ["B101", "B102"]
+exclude_tests = ["B301", "B302"]
+
+[tool.bandit.plugins]
+B104 = { check_typed_list = true }
 
 [tool.coverage.run]
 omit = [
@@ -176,7 +222,7 @@ load-plugins = [
     "pylint_django",
     "pylint.extensions.docparams",
 ]
-django-settings-module = "myproject.settings"
+django-settings-module = "kernel.settings"
 good-names = [
     "qs",  # QuerySet abbreviation
     "pk",  # Primary key abbreviation
