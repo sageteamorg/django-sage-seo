@@ -5,6 +5,7 @@ import string
 
 from django.urls import URLPattern, URLResolver
 from django.views.generic import DetailView
+from django.utils.safestring import mark_safe
 
 from sage_seo.helpers.enums import SearchEngineRules
 
@@ -52,9 +53,8 @@ def build_json_ld(json_ld):
     """Return a script tag with JSON-LD data if present."""
     if json_ld:
         json_ld_data = json.dumps(json_ld)
-        # Escape the JSON data before inserting it into the script tag
-        escaped_json_ld_data = html.escape(json_ld_data)
-        return f'<script type="application/ld+json">{escaped_json_ld_data}</script>'
+        # Mark the JSON-LD data as safe for HTML output
+        return mark_safe(f'<script type="application/ld+json">{json_ld_data}</script>')
     return ""
 
 

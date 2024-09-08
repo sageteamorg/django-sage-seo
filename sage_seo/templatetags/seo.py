@@ -4,6 +4,7 @@ import logging
 from django import template
 from django.conf import settings
 from django.utils.html import escape, format_html
+from django.utils.safestring import mark_safe
 
 from sage_seo.funcs import build_json_ld, build_robots_meta, get_meta_info
 
@@ -15,7 +16,7 @@ register = template.Library()
 def render_meta_tags(view_name):
     try:
         meta_info = get_meta_info(view_name)
-    except IndexError as e:
+    except IndexError:
         return ""
 
     if not meta_info:
@@ -57,7 +58,8 @@ def render_meta_tags(view_name):
     if json_ld_script:
         meta_tags.append(json_ld_script)
 
-    return "".join(meta_tags)
+    # Join the tags and mark the entire string as safe
+    return mark_safe("".join(meta_tags))
 
 
 @register.simple_tag
@@ -151,4 +153,5 @@ def render_detail_meta_tags(obj):
     except AttributeError as e:
         logger.debug(e, exc_info=True)
 
-    return "".join(meta_tags)
+    # Join the tags and mark the entire string as safe
+    return mark_safe("".join(meta_tags))
