@@ -82,7 +82,6 @@ PRODUCT_LIST_SCHEMA = {
                         },
                     },
                 },
-                "required": ["name", "url"],
             },
         },
     },
@@ -148,5 +147,4 @@ PRODUCT_DETAIL_SCHEMA = {
             },
         },
     },
-    "required": ["name", "url"],
 }
