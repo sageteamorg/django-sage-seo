@@ -40,7 +40,7 @@ django = [
     { version = ">=4.2,<5.3", python = ">=3.10" }  # Django 4.2 and 5.x for Python 3.10+
 ]
 django-jsonforms = ">=1.0,<3.0"
-django-sage-tools = "^0.3.0"
+django-sage-tools = "^0.3.2"
 
 
 [tool.poetry.group.dev.dependencies]
