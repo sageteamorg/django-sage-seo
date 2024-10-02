@@ -683,13 +683,13 @@ jsonschema = "*"
 
 [[package]]
 name = "django-sage-tools"
-version = "0.3.3"
+version = "0.3.4"
 description = "Reusable, generic mixins for Django"
 optional = false
 python-versions = "<4.0,>=3.8"
 files = [
-    {file = "django_sage_tools-0.3.3-py3-none-any.whl", hash = "sha256:d1ff512bdb9db99a2de483d69f5995cee7daa98bf9a37d23f3fedec2f96f1212"},
-    {file = "django_sage_tools-0.3.3.tar.gz", hash = "sha256:96b57b81c00a3c7459c8ec82351d113f2f9604b9ab57df976fb5edc607e471e4"},
+    {file = "django_sage_tools-0.3.4-py3-none-any.whl", hash = "sha256:bf48b4189149c48fbaa59504a87158caf933b775927d0e8c596282a84f274b3d"},
+    {file = "django_sage_tools-0.3.4.tar.gz", hash = "sha256:5d59f3246251cc9537ddc2bc12fdcf426f2a99ab59dd9665fb1aa811f7a62265"},
 ]
 
 [package.dependencies]
