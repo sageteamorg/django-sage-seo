@@ -1,0 +1,345 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-10-02 16:32+0330\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+#: .\sage_seo\admin\actions\robot.py:11
+msgid "Reset robots.txt content to default"
+msgstr ""
+
+#: .\sage_seo\admin\actions\robot.py:18 .\sage_seo\admin\actions\robot.py:21
+msgid "Action cannot be performed on multiple instances."
+msgstr ""
+
+#: .\sage_seo\admin\actions\robot.py:26
+msgid "Selected robots.txt content has been reset."
+msgstr ""
+
+#: .\sage_seo\admin\actions\robot.py:31
+msgid "An error occurred while resetting the content."
+msgstr ""
+
+#: .\sage_seo\apps.py:8
+msgid "Search Engine Optimization"
+msgstr ""
+
+#: .\sage_seo\helpers\choices.py:6
+msgid "Head"
+msgstr ""
+
+#: .\sage_seo\helpers\choices.py:7
+msgid "Start of Body"
+msgstr ""
+
+#: .\sage_seo\helpers\choices.py:8
+msgid "End of Body"
+msgstr ""
+
+#: .\sage_seo\helpers\enums.py:19
+msgid "primary"
+msgstr ""
+
+#: .\sage_seo\helpers\enums.py:20
+msgid "temporary"
+msgstr ""
+
+#: .\sage_seo\helpers\enums.py:24
+msgid "Index"
+msgstr ""
+
+#: .\sage_seo\helpers\enums.py:25
+msgid "NoIndex"
+msgstr ""
+
+#: .\sage_seo\helpers\enums.py:26
+msgid "Follow"
+msgstr ""
+
+#: .\sage_seo\helpers\enums.py:27
+msgid "NoFollow"
+msgstr ""
+
+#: .\sage_seo\models\meta_info.py:21
+msgid "View Name"
+msgstr ""
+
+#: .\sage_seo\models\meta_info.py:22
+msgid "The name of the view or page this meta information applies to."
+msgstr ""
+
+#: .\sage_seo\models\meta_info.py:28
+msgid "Title"
+msgstr ""
+
+#: .\sage_seo\models\meta_info.py:29
+msgid "The title of the page for SEO purposes."
+msgstr ""
+
+#: .\sage_seo\models\meta_info.py:35
+msgid "Description"
+msgstr ""
+
+#: .\sage_seo\models\meta_info.py:37
+msgid ""
+"A brief description of the page content for SEO purposes. Ideally 155 to 160 "
+"characters."
+msgstr ""
+
+#: .\sage_seo\models\meta_info.py:45 .\sage_seo\models\meta_info.py:61
+#: .\sage_seo\models\mixins\seo.py:25
+msgid "SEO Keywords"
+msgstr ""
+
+#: .\sage_seo\models\meta_info.py:47 .\sage_seo\models\meta_info.py:63
+#: .\sage_seo\models\mixins\seo.py:29
+msgid "A list of keywords relevant to the page content, used for SEO purposes."
+msgstr ""
+
+#: .\sage_seo\models\meta_info.py:56 .\sage_seo\models\meta_info.py:71
+#: .\sage_seo\models\mixins\seo.py:157 .\sage_seo\models\mixins\seo.py:170
+#: .\sage_seo\models\mixins\seo.py:183 .\sage_seo\models\mixins\seo.py:196
+msgid "Structured JSON-LD data for rich snippets. Enter valid JSON."
+msgstr ""
+
+#: .\sage_seo\models\meta_info.py:77
+msgid "Indicates whether search engines should index this page."
+msgstr ""
+
+#: .\sage_seo\models\meta_info.py:84
+msgid ""
+"Determines if search engine crawlers should follow links on this page. "
+"'True' allows following links, enhancing link equity distribution."
+msgstr ""
+
+#: .\sage_seo\models\meta_info.py:91
+msgid "Canonical URL"
+msgstr ""
+
+#: .\sage_seo\models\meta_info.py:93
+msgid ""
+"The preferred URL for this page, used to avoid duplicate content issues."
+msgstr ""
+
+#: .\sage_seo\models\mixins\seo.py:35
+msgid "SEO Description"
+msgstr ""
+
+#: .\sage_seo\models\mixins\seo.py:56
+msgid "OG Title"
+msgstr ""
+
+#: .\sage_seo\models\mixins\seo.py:58
+msgid ""
+"The title of the webpage. Example: 'The Amazing Spider-Man - Movie Review'"
+msgstr ""
+
+#: .\sage_seo\models\mixins\seo.py:67
+msgid "OG Type"
+msgstr ""
+
+#: .\sage_seo\models\mixins\seo.py:69
+msgid ""
+"The type of the content. Common values: 'website', 'article', 'video', etc. "
+"Example: 'article'"
+msgstr ""
+
+#: .\sage_seo\models\mixins\seo.py:77
+msgid "OG Image"
+msgstr ""
+
+#: .\sage_seo\models\mixins\seo.py:79
+msgid ""
+"The URL of the image that represents the webpage. Example: 'https://www."
+"example.com/image.jpg'"
+msgstr ""
+
+#: .\sage_seo\models\mixins\seo.py:88
+msgid "OG Description"
+msgstr ""
+
+#: .\sage_seo\models\mixins\seo.py:90
+msgid ""
+"A description of the webpage content. Example: 'A comprehensive review of "
+"the latest Spider-Man movie, including storyline, character development, and "
+"special effects.'"
+msgstr ""
+
+#: .\sage_seo\models\mixins\seo.py:98
+msgid "OG URL"
+msgstr ""
+
+#: .\sage_seo\models\mixins\seo.py:100
+msgid "The URL of the webpage. Example: 'https://www.example.com/page.html'"
+msgstr ""
+
+#: .\sage_seo\models\mixins\seo.py:110
+msgid "OG Site Name"
+msgstr ""
+
+#: .\sage_seo\models\mixins\seo.py:111
+msgid "The name of the website. Example: 'Example Website'"
+msgstr ""
+
+#: .\sage_seo\models\mixins\seo.py:119
+msgid "OG Locale"
+msgstr ""
+
+#: .\sage_seo\models\mixins\seo.py:121
+msgid ""
+"The locale of the content. Common values: 'en_US', 'fr_FR', etc. Example: "
+"'en_US'"
+msgstr ""
+
+#: .\sage_seo\models\mixins\seo.py:126
+msgid "Enter a valid locale identifier like en_US"
+msgstr ""
+
+#: .\sage_seo\models\mixins\seo.py:136
+msgid "Article Author"
+msgstr ""
+
+#: .\sage_seo\models\mixins\seo.py:137
+msgid "The name of the author of the article. Example: 'John Doe'"
+msgstr ""
+
+#: .\sage_seo\models\robot.py:11 .\sage_seo\models\robot.py:12
+msgid "Robots.txt"
+msgstr ""
+
+#: .\sage_seo\models\script_tag.py:12
+msgid "Name"
+msgstr ""
+
+#: .\sage_seo\models\script_tag.py:13
+msgid "Unique name of the script tag."
+msgstr ""
+
+#: .\sage_seo\models\script_tag.py:17
+msgid "Content"
+msgstr ""
+
+#: .\sage_seo\models\script_tag.py:18
+msgid "The HTML/JavaScript content to be injected."
+msgstr ""
+
+#: .\sage_seo\models\script_tag.py:25
+msgid "Placement"
+msgstr ""
+
+#: .\sage_seo\models\script_tag.py:26
+msgid "Location in the HTML document where the script will be injected."
+msgstr ""
+
+#: .\sage_seo\models\script_tag.py:31
+msgid "Active"
+msgstr ""
+
+#: .\sage_seo\models\script_tag.py:32
+msgid "Status to indicate whether the script is active or not."
+msgstr ""
+
+#: .\sage_seo\models\script_tag.py:40
+msgid "Script Tag"
+msgstr ""
+
+#: .\sage_seo\models\script_tag.py:41
+msgid "Script Tags"
+msgstr ""
+
+#: .\sage_seo\models\slug_swap.py:23
+msgid "Old Slug"
+msgstr ""
+
+#: .\sage_seo\models\slug_swap.py:28 .\sage_seo\models\slug_swap.py:40
+msgid ""
+"Slug is a newspaper term. A short label for something containing only "
+"letters, numbers, underscores, or hyphens. They are generally used in URLs."
+msgstr ""
+
+#: .\sage_seo\models\slug_swap.py:35
+msgid "New Slug"
+msgstr ""
+
+#: .\sage_seo\models\slug_swap.py:49
+msgid "Content type of the related object."
+msgstr ""
+
+#: .\sage_seo\models\slug_swap.py:51
+msgid "ID of the related object."
+msgstr ""
+
+#: .\sage_seo\models\slug_swap.py:55
+msgid "redirect type"
+msgstr ""
+
+#: .\sage_seo\models\slug_swap.py:61
+msgid ""
+"refers to the HTTP status code that is used toredirect a user from one URL "
+"to another"
+msgstr ""
+
+#: .\sage_seo\models\slug_swap.py:67
+msgid "Slug Swap"
+msgstr ""
+
+#: .\sage_seo\models\slug_swap.py:68
+msgid "Slug Swaps"
+msgstr ""
+
+#: .\sage_seo\models\url_redirect.py:26
+msgid "Old URL"
+msgstr ""
+
+#: .\sage_seo\models\url_redirect.py:29
+msgid "The old URL that was replaced."
+msgstr ""
+
+#: .\sage_seo\models\url_redirect.py:34
+msgid "New URL"
+msgstr ""
+
+#: .\sage_seo\models\url_redirect.py:37
+msgid "The new URL that replaced the old one."
+msgstr ""
+
+#: .\sage_seo\models\url_redirect.py:42
+msgid "Redirect Type"
+msgstr ""
+
+#: .\sage_seo\models\url_redirect.py:48
+msgid "The HTTP status code used to redirect a user from one URL to another."
+msgstr ""
+
+#: .\sage_seo\models\url_redirect.py:53
+msgid "URL Redirect"
+msgstr ""
+
+#: .\sage_seo\models\url_redirect.py:54
+msgid "URL Redirects"
+msgstr ""
+
+#: .\sage_seo\models\url_redirect.py:64
+#, python-format
+msgid ""
+"A reverse mapping already exists with old URL '%(old_url)s' and new URL "
+"'%(new_url)s'."
+msgstr ""
+
+#: .\sage_seo\models\validators.py:11
+msgid "URL must start and end with a slash (/)."
+msgstr ""
